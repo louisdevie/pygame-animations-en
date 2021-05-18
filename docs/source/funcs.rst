@@ -1,35 +1,35 @@
 ===========
- Fonctions
+ Functions
 ===========
 
 .. function:: pygame_animations.update_animations()
     
-    Actualise toutes les animations en cours. Il faut l'appeler avant de dessiner chaque frame.
+    Update all running animations. It needs to be called before drawing each frame.
     
-    :Paramètres: Aucuns
+    :Parameters: None
     
-    :Renvoie: ``None``
+    :Returns: ``None``
 
 .. function:: pygame_animations.stop_all()
     
-    Arrête toutes les animations en cours. Voir :ref:`Animation.stop <stopmethod>` pour plus d'informations.
+    Stop all the running animations. See :ref:`Animation.stop <stopmethod>` for more informations.
     
-    :Paramètres: Aucuns
+    :Parameters: None
     
-    :Renvoie: ``None``
+    :Returns: ``None``
 
 .. function:: pygame_animations.cancel_all()
     
-    Annule toutes les animations en cours. Voir :ref:`Animation.cancel <cancelmethod>` pour plus d'informations.
+    Cancel all the running animations. See :ref:`Animation.cancel <cancelmethod>` for more informations.
     
-    :Paramètres: Aucuns
+    :Parameters: None
     
-    :Renvoie: ``None``
+    :Returns: ``None``
 
 .. function:: pygame_animations.fastforward_all()
     
-    Termine toutes les animations en cours. Voir :ref:`Animation.fastforward <fastforwardmethod>` pour plus d'informations.
+    Finish all the running animations. See :ref:`Animation.fastforward <fastforwardmethod>` for more informations.
     
-    :Paramètres: Aucuns
+    :Parameters: None
     
-    :Renvoie: ``None``
+    :Returns: ``None``
