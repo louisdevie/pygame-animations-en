@@ -3,10 +3,10 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Documentation de pygame-animations
+pygame-animations documentation
 ======================================
 
-Ce paquet est une extension pour pygame qui vous permet d'animer presque n'importe quoi.
+This package is an axtension of pygame that lets you animate almost anything.
 
 Installation :
     ``python3 -m pip install pygame-animations``
