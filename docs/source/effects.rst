@@ -1,19 +1,19 @@
 ====================
- Effets d'animation
+ Animation effects
 ====================
 
 .. _nativeeffects:
 
 ---------------
- Effets natifs
+ Native effects
 ---------------
 
-Les effets natif sont regroupés dans l'énumération ``pygame_animations.Effects``:
+Native effects a gathered in the enumeration ``pygame_animations.Effects``:
 
 +--------------------------+--------------------------------------------------+
-|``Effects.linear``        | vitesse constante                                |
+|``Effects.linear``        | constant speed                                   |
 +--------------------------+--------------------------------------------------+
-|``Effects.sin_in``        | accélération, de la plus douce à la plus brutale |
+|``Effects.sin_in``        | acceleration, from the softest to the hardest    |
 |                          |                                                  |
 |``Effects.square_in``     |                                                  |
 |                          |                                                  |
@@ -21,7 +21,7 @@ Les effets natif sont regroupés dans l'énumération ``pygame_animations.Effect
 |                          |                                                  |
 |``Effects.quad_in``       |                                                  |
 +--------------------------+--------------------------------------------------+
-|``Effects.sin_out``       | décélération, de la plus douce à la plus brutale |
+|``Effects.sin_out``       | decceleration, from the softest to the hardest   |
 |                          |                                                  |
 |``Effects.square_out``    |                                                  |
 |                          |                                                  |
@@ -29,37 +29,37 @@ Les effets natif sont regroupés dans l'énumération ``pygame_animations.Effect
 |                          |                                                  |
 |``Effects.quad_out``      |                                                  |
 +--------------------------+--------------------------------------------------+
-|``Effects.sin_in_out``    | accélération au début et décélération à la fin,  |
-|                          | de la plus douce à la plus brutale               |
+|``Effects.sin_in_out``    | acceleration at first then decceleration, from   |
+|                          | the softest to the hardest                       |
 |``Effects.square_in_out`` |                                                  |
 |                          |                                                  |
 |``Effects.cubic_in_out``  |                                                  |
 |                          |                                                  |
 |``Effects.quad_in_out``   |                                                  |
 +--------------------------+--------------------------------------------------+
-|``Effects.sin_shake``     | avance et recule avec une amplitude décroissante |
+|``Effects.sin_shake``     | go back and forth with decreasing amplitude      |
 +--------------------------+--------------------------------------------------+
-|``Effects.bounce_in``     | rebondis au début                                |
+|``Effects.bounce_in``     | bounce at the start                              |
 +--------------------------+--------------------------------------------------+
-|``Effects.bounce_out``    | rebondis à la fin                                |
+|``Effects.bounce_out``    | bounce at the end                                |
 +--------------------------+--------------------------------------------------+
-|``Effects.bounce_in_out`` | rebondis au début et à la fin                    |
+|``Effects.bounce_in_out`` | bounce at the start and at the end               |
 +--------------------------+--------------------------------------------------+
 
-.. Tip:: ``Effects`` étant une énumération, vous pouvez l'utiliser dans un boucle ``for in``, et l'effet ``Effects.linear`` peut aussi être désigné par ``Effects["linear"]`` ou ``Effects[0]`` (attention, ils ne sont pas dans l'ordre dans le tableau ci-dessus).
+.. Tip:: ``Effects`` being an enumeration, you can use it in a ``for in`` loop, and the effect ``Effects.linear`` can also be accessed by doing ``Effects["linear"]`` or ``Effects[0]`` (They're not in the right order it the table above though).
 
 ----------------------
- Effets personnalisés
+ Custom effects
 ----------------------
 
 .. _customeffects:
 
-Un objet qui valide les conditions suivantes peut être utilisée comme effet:
+An object that match the next requirements can be used as an effect:
 
-- appellable (fonction, expression lambda, ...)
-- prends un seul paramètre, de type ``float`` entre 0 (inclus) et 1 (inclus)
-- renvoie un ``float``
+- callable (function, lambda expression, ...)
+- takes one parameter, of type ``float``, between 0 (included) and 1 (included)
+- returns a ``float``
 
-Le paramètre est la progression *dans le temps* de l'animation (de 0 au début à 1 à la fin).
+The parameter is the progression *in time* of the animation (from 0 at the start to 1 at the end).
 
-La valeur revoyée est la progression dans l'animation (0 = état initial et 1 est l'état final). Elle doit être à 0 au début et à 1 à la fin (exception: ``Effects.sin_shake`` qui revient à 0).
+The returned value is the progression in the animation (0 is the initial state and 1 is the final state). It should begin at 0 and end at 1 (exception: ``Effects.sin_shake`` wich come back 0).
