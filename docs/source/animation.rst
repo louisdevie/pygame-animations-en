@@ -1,165 +1,165 @@
-=======================
- Les classes Animation
-=======================
+===================
+ Animation Classes
+===================
 
-------------------
- Classe Animation
-------------------
+---------------------
+ The Animation class
+---------------------
 
 .. class:: pygame_animations.Animation(target, duration[, effect] [, flag=None], **attrs)
 
-    Une animation.
+    An animation.
     
-    :Paramètres:
-        - **target** *(object)*: l'objet à animer.
-        - **duration** *(int, float)*: durée de l'animation, en secondes.
-        - **effect** *(callable)*: effet à appliquer à l'animation. Il peut être un :ref:`effet natif <nativeeffects>` ou un :ref:`effet personnalisé <customeffects>`.
-        - **flag** : sert à repérer l'animation. N'importe quoi peut être utilisé, et un même flag peut être utilisé sur différentes animations.
-        - **attrs** : propriétés à animer. pour désigner une sous-propriété ``a.b.c``, utilisez ``a__b__c``
+    :Parameters:
+        - **target** *(object)*: the object to animate.
+        - **duration** *(int, float)*: duration of the animation, in seconds.
+        - **effect** *(callable)*: effect applied to the animation. It can be a :ref:`native effect <nativeeffects>` or a :ref:`custom one <customeffects>`.
+        - **flag** : used to track the animation. Anything can be used, and a same flag can be used on different animations.
+        - **attrs** : properties to animate. To select a sub-property ``a.b.c``, use ``a__b__c``
     
     .. attribute:: target
         
-        (Lecture seule) L'objet ciblé par l'animation.
+        (Read-only) The object targeted by the animation.
     
     .. attribute:: duration
         
-        (Lecture seule) La durée de l'animation, convertie et arrondie en millisecondes.
+        (Read-only) Duration of the animation, converted and rounded to millisecondes.
     
     .. function:: start()
         
-        Lance l'animation. Elle ne peut être appelée qu'une seule fois.
+        Starts the animation. It can only be called once.
         
-        :Paramètres: Aucuns
+        :Parameters: None
         
-        :Renvoie: ``None``
+        :Returns: ``None``
 
     .. _stopmethod:
 
     .. function:: stop([noerror=False])
 
-        Arrête l'animation et laisse l'objet animé tel quel. Une fois arrêtée, elle ne peut pas être relancée.
+        Stop the animation and leave the animated object as it is. Once stopped, it cannot be resumed.
         
-        :Paramètres:
-            - **noerror** *(bool)*: quand la méthode est appelée sur une animation qui n'est pas en cours, ignore si ``True`` ou lève une ``RuntimeError`` si ``False``.
+        :Parameters:
+            - **noerror** *(bool)*: when the method is called on an animation that is not running, ignore if set to ``True`` or raise a ``RuntimeError`` if set to ``False``.
         
-        :Renvoie: ``None``
+        :Returns: ``None``
 
     .. _cancelmethod:
 
     .. function:: cancel([noerror=False])
 
-        Pareil que :ref:`stop() <stopmethod>`, mais remet l'objet animé dans son état initial.
+        Same as :ref:`stop() <stopmethod>`, but put the animated object back in it's initial state.
 
-        :Paramètre:
-            - **noerror** *(bool)*: voir :ref:`stop() <stopmethod>`
+        :Parameters:
+            - **noerror** *(bool)*: see :ref:`stop() <stopmethod>`
         
-        :Renvoie: ``None``
+        :Returns: ``None``
 
     .. _fastforwardmethod:
 
     .. function:: fastforward([noerror=False])
 
-        Pareil que :ref:`stop() <stopmethod>`, mais met l'objet animé dans son état final.
+        Same as :ref:`stop() <stopmethod>`, but put the animated object directly in it's final state.
 
-        :Paramètre:
-            - **noerror** *(bool)*: voir :ref:`stop() <stopmethod>`
+        :Parameters:
+            - **noerror** *(bool)*: see :ref:`stop() <stopmethod>`
         
-        :Renvoie: ``None``
+        :Returns: ``None``
         
     .. function:: is_running()
 
-        Renvoie ``True`` si l'animation est en cours.
+        Returns ``True`` if the animation is running.
         
-        :Paramètres: Aucuns
+        :Parameters: Aucuns
         
-        :Renvoie: ``bool``
+        :Returns: ``bool``
         
     .. function:: can_run()
 
-        Renvoie ``True`` si l'animation n'a pas encore été lancée.
+        Returns ``True`` if the animation hasn't been started yet.
         
-        :Paramètres: Aucuns
+        :Parameters: Aucuns
         
-        :Renvoie: ``bool``
+        :Returns: ``bool``
 
 
---------------------------
- Classe AnimationSequence
---------------------------
+-----------------------------
+ The AnimationSequence class
+-----------------------------
 
 .. class:: pygame_animations.AnimationSequence(a, b, [*others] [, flag=None])
     
-    Inhérite de ``pygame_animations.Animation``
+    Inherits from ``pygame_animations.Animation``
 
-    Plusieurs animations lancées les une après les autres.
-    Une séquence peut être créée en additionnant plusieurs animations : ``anim1 + anim2 + anim3`` vaut ``AnimationSequence(anim1, anim2, anim3)``
+    Multiple animations run one after another.
+    A sequence can be created by adding animations together : ``anim1 + anim2 + anim3`` gives ``AnimationSequence(anim1, anim2, anim3)``
     
-    :Paramètres:
-        - **a**, **b** et **others** *(Animation)*: les animations de la séquence
-        - **flag** : sert à repérer l'animation. N'importe quoi peut être utilisé, et un même flag peut être utilisé sur différentes animations.
+    :Parameters:
+        - **a**, **b** and **others** *(Animation)*: animations of the sequence
+        - **flag** : used to track the animation. Anything can be used, and a same flag can be used on different animations.
     
     .. attribute:: animations
         
-        (Lecture seule) Les animations qui composent la séquence.
+        (Read-only) The animations of the sequence.
     
     .. attribute:: duration
         
-        (Lecture seule) La durée de l'animation, égale à la somme des durées des animations.
+        (Read-only) The duration of the sequence, equal to the sum of all the animations.
     
     .. function:: start()
         
-        Lance l'animation. Elle ne peut être appelée qu'une seule fois.
+        Starts the animation. It can only be called once.
         
-        :Paramètres: Aucuns
+        :Parameters: None
         
-        :Renvoie: ``None``
+        :Returns: ``None``
 
     .. _stopsequence:
 
     .. function:: stop([noerror=False])
 
-        Arrête la séquence et appelle :ref:`stop() <stopmethod>` sur toutes les animations.
+        Stops the sequence and call :ref:`stop() <stopmethod>` on all the animations.
         
-        :Paramètres:
-            - **noerror** *(bool)*: quand la méthode est appelée sur une animation qui n'est pas en cours, ignore si ``True`` ou lève une ``RuntimeError`` si ``False``.
+        :Parameters:
+            - **noerror** *(bool)*: when the method is called on an animation that is not running, ignore if set to ``True`` or raise a ``RuntimeError`` if set to ``False``.
         
-        :Renvoie: ``None``
+        :Returns: ``None``
 
     .. _cancelsequence:
 
     .. function:: cancel([noerror=False])
 
-        Pareil que :ref:`stop() <stopsequence>`, mais appelle :ref:`cancel() <cancelmethod>` sur toutes les animations.
+        Same as :ref:`stop() <stopsequence>`, but call :ref:`cancel() <cancelmethod>` on all the animations.
 
-        :Paramètre:
-            - **noerror** *(bool)*: voir :ref:`stop() <stopmethod>`
+        :Parameters:
+            - **noerror** *(bool)*: see :ref:`stop() <stopsequence>`
         
-        :Renvoie: ``None``
+        :Returns: ``None``
 
     .. _fastforwardsequence:
 
     .. function:: fastforward([noerror=False])
 
-        Pareil que :ref:`stop() <stopsequence>`, mais appelle :ref:`fastforward() <fastforwardmethod>` sur toutes les animations.
+        Same as :ref:`stop() <stopsequence>`, but call :ref:`fastforward() <fastforwardmethod>` on all the animations.
 
-        :Paramètre:
-            - **noerror** *(bool)*: voir :ref:`stop() <stopmethod>`
+        :Parameters:
+            - **noerror** *(bool)*: see :ref:`stop() <stopsequence>`
         
-        :Renvoie: ``None``
+        :Returns: ``None``
         
     .. function:: is_running()
 
-        Renvoie ``True`` si l'animation est en cours.
+        Returns ``True`` if the animation is running.
         
-        :Paramètres: Aucuns
+        :Parameters: None
         
-        :Renvoie: ``bool``
+        :Returns: ``bool``
         
     .. function:: can_run()
 
-        Renvoie ``True`` si l'animation n'a pas encore été lancée.
+        Returns ``True`` if the animation hasn't been started yet.
         
-        :Paramètres: Aucuns
+        :Parameters: None
         
         :Renvoie: ``bool``
 
@@ -170,76 +170,76 @@
 
 .. class:: pygame_animations.AnimationGroup(a, b, [*others] [, flag=None])
     
-    Inhérite de ``pygame_animations.Animation``
+    Inherits from ``pygame_animations.Animation``
 
-    Plusieurs animations lancées en même temps.
-    Un groupe peut être créé en utilisant l'opérateur ``&`` entre plusieurs animations : ``anim1 & anim2 & anim3`` vaut ``AnimationGroup(anim1, anim2, anim3)``
+    Multiple animations run together.
+    A group can be created by using the ``&`` operator between animations : ``anim1 & anim2 & anim3`` gives ``AnimationGroup(anim1, anim2, anim3)``
     
-    :Paramètres:
-        - **a**, **b** et **others** *(Animation)*: les animations du groupe
-        - **flag** : sert à repérer l'animation. N'importe quoi peut être utilisé, et un même flag peut être utilisé sur différentes animations.
+    :Parameters:
+        - **a**, **b** and **others** *(Animation)*: the animations of the group
+        - **flag** : used to track the animation. Anything can be used, and a same flag can be used on different animations.
     
     .. attribute:: animations
         
-        (Lecture seule) Les animations qui composent le groupe.
+        (Read-only) The animations of the group.
     
     .. attribute:: duration
         
-        (Lecture seule) La durée de l'animation, égale à la durée la plus longue de toutes les animations.
+        (Read-only) The duration of the group, equal to the longest duration of the animations.
     
     .. function:: start()
         
-        Lance l'animation. Elle ne peut être appelée qu'une seule fois.
+        Starts the animation. It can only be called once.
         
-        :Paramètres: Aucuns
+        :Parameters: None
         
-        :Renvoie: ``None``
+        :Returns: ``None``
 
     .. _stopgroup:
 
     .. function:: stop([noerror=False])
 
-        Arrête la séquence et appelle :ref:`stop() <stopmethod>` sur toutes les animations.
+        Stops the group and call :ref:`stop() <stopmethod>` on all the animations.
         
-        :Paramètres:
-            - **noerror** *(bool)*: quand la méthode est appelée sur une animation qui n'est pas en cours, ignore si ``True`` ou lève une ``RuntimeError`` si ``False``.
+        :Parameters:
+            - **noerror** *(bool)*: when the method is called on an animation that is not running, ignore if set to ``True`` or raise a ``RuntimeError`` if set to ``False``.
         
-        :Renvoie: ``None``
+        :Returns: ``None``
 
     .. _cancelgroup:
 
     .. function:: cancel([noerror=False])
 
-        Pareil que :ref:`stop() <stopgroup>`, mais appelle :ref:`cancel() <cancelmethod>` sur toutes les animations.
+        Same as :ref:`stop() <stopgroup>`, but call :ref:`cancel() <cancelmethod>` on all the animations.
 
-        :Paramètre:
-            - **noerror** *(bool)*: voir :ref:`stop() <stopmethod>`
+        :Parameters:
+            - **noerror** *(bool)*: see :ref:`stop() <stopgroup>`
         
-        :Renvoie: ``None``
+        :Returns: ``None``
 
     .. _fastforwardgroup:
 
     .. function:: fastforward([noerror=False])
 
-        Pareil que :ref:`stop() <stopgroup>`, mais appelle :ref:`fastforward() <fastforwardmethod>` sur toutes les animations.
+        Same as :ref:`stop() <stopgroup>`, but call :ref:`fastforward() <fastforwardmethod>` on all the animations.
 
-        :Paramètre:
-            - **noerror** *(bool)*: voir :ref:`stop() <stopmethod>`
+        :Parameters:
+            - **noerror** *(bool)*: see :ref:`stop() <stopgroup>`
         
-        :Renvoie: ``None``
+        :Returns: ``None``
         
     .. function:: is_running()
 
-        Renvoie ``True`` si l'animation est en cours.
+        Returns ``True`` if the animation is running.
         
-        :Paramètres: Aucuns
+        :Parameters: None
         
-        :Renvoie: ``bool``
+        :Returns: ``bool``
         
     .. function:: can_run()
 
-        Renvoie ``True`` si l'animation n'a pas encore été lancée.
+        Returns ``True`` if the animation hasn't been started yet.
         
-        :Paramètres: Aucuns
+        :Parameters: None
         
-        :Renvoie: ``bool``
+        :Returns: ``bool``
