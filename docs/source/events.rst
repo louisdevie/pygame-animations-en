@@ -1,23 +1,23 @@
 ============
- Évènements
+ Events
 ============
 
-Des évènements pygame sont postés quand une animation débute ou finis.
+Pygame events are posted whenever an animation starts or end.
 
-Ce paquet rajoute donc deux types d'évènements:
+This package adds then two event types:
 
 .. attribute:: pygame_animations.ANIMATIONSTARTED
     
-    Posté quand une animation débute.
+    Posted when an animation starts.
 
-    :Attributs:
-        - **animation** : l'animation qui a été lancée.
-        - **flag** : le ``flag`` de l'animation.
+    :Event attributes:
+        - **animation** : the animation that have been started.
+        - **flag** : the ``flag`` of the animation.
 
 .. attribute:: pygame_animations.ANIMATIONENDED
     
-    Posté quand une animation prends fin.
+    Posted when an animation ends.
 
-    :Attributs:
-        - **animation** : l'animation qui a pris fin.
-        - **flag** : le ``flag`` de l'animation.
+    :Event attributes:
+        - **animation** : the animation that ended.
+        - **flag** : the ``flag`` of the animation.
