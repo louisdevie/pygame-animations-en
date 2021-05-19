@@ -6,6 +6,8 @@
 pygame-animations documentation
 ======================================
 
+*Aussi disponible en* `Français <https://pygame-animations.readthedocs.io/fr/v1.2.1>`_
+
 This package is an axtension of pygame that lets you animate almost anything.
 
 Installation :
