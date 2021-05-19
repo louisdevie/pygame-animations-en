@@ -12,7 +12,6 @@ This package adds then two event types:
 
     :Event attributes:
         - **animation** : the animation that have been started.
-        - **flag** : the ``flag`` of the animation.
 
 .. attribute:: pygame_animations.ANIMATIONENDED
     
@@ -20,4 +19,3 @@ This package adds then two event types:
 
     :Event attributes:
         - **animation** : the animation that ended.
-        - **flag** : the ``flag`` of the animation.
