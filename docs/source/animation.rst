@@ -14,7 +14,7 @@
         - **target** *(object)*: the object to animate.
         - **duration** *(int, float)*: duration of the animation, in seconds.
         - **effect** *(callable)*: effect applied to the animation. It can be a :ref:`native effect <nativeeffects>` or a :ref:`custom one <customeffects>`.
-        - **flag** : used to track the animation. Anything can be used, and a same flag can be used on different animations.
+        - **flag** *(str)*: used to track the animation. Flags must be alphanumeric and separated by commas.
         - **attrs** : properties to animate. To select a sub-property ``a.b.c``, use ``a__b__c``
     
     .. attribute:: target
@@ -82,6 +82,19 @@
         
         :Returns: ``bool``
 
+    .. _matchmethod:
+    
+    .. function:: match(flags)
+
+        Returns ``True`` if the animation's flags match the given flags.
+
+        :Paramètres:
+            - **flags** *(str)*: the flags to test against, separated by commas. The flag ``*`` matches anything and ``flag1|flag2`` will match either ``flag1`` or ``flag2``.
+
+        :Renvoie: ``bool``
+
+        .. Note:: match() will always return ``False`` if the animation has no flags
+
 
 -----------------------------
  The AnimationSequence class
@@ -96,7 +109,7 @@
     
     :Parameters:
         - **a**, **b** and **others** *(Animation)*: animations of the sequence
-        - **flag** : used to track the animation. Anything can be used, and a same flag can be used on different animations.
+        - **flag** *(str)*: used to track the animation. Flags must be alphanumeric and separated by commas.
     
     .. attribute:: animations
         
@@ -107,12 +120,6 @@
         (Read-only) The duration of the sequence, equal to the sum of all the animations.
     
     .. function:: start()
-        
-        Starts the animation. It can only be called once.
-        
-        :Parameters: None
-        
-        :Returns: ``None``
 
     .. _stopsequence:
 
@@ -148,20 +155,10 @@
         :Returns: ``None``
         
     .. function:: is_running()
-
-        Returns ``True`` if the animation is running.
-        
-        :Parameters: None
-        
-        :Returns: ``bool``
         
     .. function:: can_run()
 
-        Returns ``True`` if the animation hasn't been started yet.
-        
-        :Parameters: None
-        
-        :Renvoie: ``bool``
+    .. function:: match(flags)
 
 
 -----------------------
@@ -177,7 +174,7 @@
     
     :Parameters:
         - **a**, **b** and **others** *(Animation)*: the animations of the group
-        - **flag** : used to track the animation. Anything can be used, and a same flag can be used on different animations.
+        - **flag** *(str)*: used to track the animation. Flags must be alphanumeric and separated by commas.
     
     .. attribute:: animations
         
@@ -188,12 +185,6 @@
         (Read-only) The duration of the group, equal to the longest duration of the animations.
     
     .. function:: start()
-        
-        Starts the animation. It can only be called once.
-        
-        :Parameters: None
-        
-        :Returns: ``None``
 
     .. _stopgroup:
 
@@ -229,17 +220,7 @@
         :Returns: ``None``
         
     .. function:: is_running()
-
-        Returns ``True`` if the animation is running.
-        
-        :Parameters: None
-        
-        :Returns: ``bool``
         
     .. function:: can_run()
-
-        Returns ``True`` if the animation hasn't been started yet.
-        
-        :Parameters: None
-        
-        :Returns: ``bool``
+    
+    .. function:: match(flags)
