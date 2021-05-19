@@ -88,10 +88,10 @@
 
         Returns ``True`` if the animation's flags match the given flags.
 
-        :Paramètres:
+        :Parameters:
             - **flags** *(str)*: the flags to test against, separated by commas. The flag ``*`` matches anything and ``flag1|flag2`` will match either ``flag1`` or ``flag2``.
 
-        :Renvoie: ``bool``
+        :Returns: ``bool``
 
         .. Note:: match() will always return ``False`` if the animation has no flags
 
@@ -162,7 +162,7 @@
 
 
 -----------------------
- Classe AnimationGroup
+ The AnimationGroup class
 -----------------------
 
 .. class:: pygame_animations.AnimationGroup(a, b, [*others] [, flag=None])
